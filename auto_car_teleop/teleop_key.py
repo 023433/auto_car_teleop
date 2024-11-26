@@ -34,9 +34,9 @@ class Autocar_Teleop(Node):
       elif key == "k":
         self.speed -= 1.0
       elif key == "j":
-        self.steering_angle += 1.0
+        self.steering_angle += 10.0
       elif key == "l":
-        self.steering_angle -= 1.0
+        self.steering_angle -= 10.0
       elif key == "p":
         self.steering_angle = 0.0
         self.speed = 0.0
