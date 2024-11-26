@@ -8,8 +8,8 @@ settings = termios.tcgetattr(sys.stdin)
 class Autocar_Teleop(Node):
   def __init__(self):
     super().__init__("autocar_teleop_pub")
-    self.speed = 0
-    self.steering_angle = 0
+    self.speed = 0.0
+    self.steering_angle = 0.0
     self.pub = self.create_publisher(AckermannDriveStamped, "/cmd_vel", 10)
     self.key_loop()
 
@@ -31,17 +31,15 @@ class Autocar_Teleop(Node):
 
       if key == "i":
         self.speed += 1.0
-        ackermann_cmd_msg.drive.speed = self.speed
       elif key == "k":
         self.speed -= 1.0
-        ackermann_cmd_msg.drive.speed = self.speed
       elif key == "j":
         self.steering_angle += 1.0
-        ackermann_cmd_msg.drive.steering_angle = self.steering_angle
       elif key == "l":
         self.steering_angle -= 1.0
-        ackermann_cmd_msg.drive.steering_angle = self.steering_angle
 
+      ackermann_cmd_msg.drive.speed = self.speed
+      ackermann_cmd_msg.drive.steering_angle = self.steering_angle
       self.pub.publish(ackermann_cmd_msg)
 
       print(key)
