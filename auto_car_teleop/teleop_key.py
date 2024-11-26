@@ -37,6 +37,9 @@ class Autocar_Teleop(Node):
         self.steering_angle += 1.0
       elif key == "l":
         self.steering_angle -= 1.0
+      elif key == "p":
+        self.steering_angle = 0.0
+        self.speed = 0.0
 
       ackermann_cmd_msg.drive.speed = self.speed
       ackermann_cmd_msg.drive.steering_angle = self.steering_angle
